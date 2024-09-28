@@ -1,3 +1,66 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* Webfont: Nohemi-Bold */
+@font-face {
+  font-family: 'Nohemi';
+  src:
+    url('/fonts/Nohemi-Bold.woff2') format('woff2'),
+    /* Modern Browsers */ url('/fonts/Nohemi-Bold.otf') format('opentype'); /* Safari, Android, iOS */
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Nohemi-Regular */
+@font-face {
+  font-family: 'Nohemi';
+  src:
+    url('/fonts/Nohemi-Regular.woff2') format('woff2'),
+    /* Modern Browsers */ url('/fonts/Nohemi-Regular.otf') format('opentype'); /* Safari, Android, iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-MediumItalic.otf') format('opentype');
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
+  font-style: italic;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
+/* Apply the custom font to the body */
+body {
+  @apply font-nohemi;
+}
+
+h1 {
+  @apply font-sfpro;
+}

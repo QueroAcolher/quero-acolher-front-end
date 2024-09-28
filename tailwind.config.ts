@@ -4,7 +4,12 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
 
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        nohemi: ['Nohemi', 'sans-serif'],
+        sfpro: ['SF Pro Display', 'sans-serif']
+      }
+    }
   },
 
   plugins: [require('@tailwindcss/typography')]
