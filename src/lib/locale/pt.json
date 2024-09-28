@@ -1,0 +1,22 @@
+{
+  "nomeDoSite": "Quero Acolher",
+  "nav": {
+    "links": {
+      "manifestarInteresse": "Manifestar Interesse",
+      "mapa": "Mapa",
+      "oQueE": "O que é?",
+      "faq": "Perguntas Frequentes",
+      "casosDeSucesso": "Casos de Sucesso"
+    }
+  },
+  "form": {
+    "labels": {
+      "name": "Nome",
+      "email": "Email",
+      "dob": "Data de Nascimento",
+      "phone": "Telefone",
+      "message": "Mensagem"
+    },
+    "submit": "Enviar"
+  }
+}

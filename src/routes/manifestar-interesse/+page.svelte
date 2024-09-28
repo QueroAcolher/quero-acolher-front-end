@@ -1,5 +1,6 @@
 <script>
   import Nav from '$components/Nav.svelte';
+  import { language, t } from '$lib/locale';
 </script>
 
 <Nav />
@@ -7,7 +8,9 @@
 <div class="mx-auto max-w-lg rounded-lg bg-white p-6 shadow-md">
   <form action="" class="space-y-4">
     <div>
-      <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+      <label for="name" class="block text-sm font-medium text-gray-700"
+        >{t($language).form.labels.name}</label
+      >
       <input
         type="text"
         id="name"
@@ -17,7 +20,9 @@
     </div>
 
     <div>
-      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+      <label for="email" class="block text-sm font-medium text-gray-700"
+        >{t($language).form.labels.email}</label
+      >
       <input
         type="email"
         id="email"
@@ -27,7 +32,9 @@
     </div>
 
     <div>
-      <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+      <label for="dob" class="block text-sm font-medium text-gray-700"
+        >{t($language).form.labels.dob}</label
+      >
       <input
         type="date"
         id="dob"
@@ -37,7 +44,9 @@
     </div>
 
     <div>
-      <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+      <label for="phone" class="block text-sm font-medium text-gray-700"
+        >{t($language).form.labels.phone}</label
+      >
       <input
         type="tel"
         id="phone"
@@ -47,7 +56,9 @@
     </div>
 
     <div>
-      <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+      <label for="message" class="block text-sm font-medium text-gray-700"
+        >{t($language).form.labels.message}</label
+      >
       <textarea
         id="message"
         name="message"
@@ -60,7 +71,7 @@
       <button
         type="submit"
         class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >Submit</button
+        >{t($language).form.submit}</button
       >
     </div>
   </form>

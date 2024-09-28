@@ -1,28 +1,30 @@
 <script lang="ts">
   import { page } from '$app/stores';
 
+  import { language, t } from '../lib/locale';
 
   const currentPage = $page.url.pathname;
-  const pages = [
+  let pages = [];
+  $: pages = [
     {
       url: 'manifestar-interesse',
-      title: 'Manifestar Interesse'
+      title: t($language).nav.links.manifestarInteresse
     },
     {
       url: 'mapa',
-      title: 'Mapa'
+      title: t($language).nav.links.mapa
     },
     {
       url: 'o-que-e',
-      title: 'O que é?'
+      title: t($language).nav.links.oQueE
     },
     {
       url: 'faq',
-      title: 'Perguntas Frequentes'
+      title: t($language).nav.links.faq
     },
     {
       url: 'casos-de-sucesso',
-      title: 'Casos de Sucesso'
+      title: t($language).nav.links.casosDeSucesso
     }
   ].map((page) => {
     return {
@@ -32,8 +34,12 @@
     };
   });
 
-  const title = pages.find((page) => page.active)?.title;
+  const title = pages.find((page) => page.active)?.title || t($language).nomeDoSite;
 
+  const changeLanguage = (event: Event) => {
+    const value = (event.target as HTMLSelectElement).value as 'en' | 'pt' | undefined;
+    $language = value || 'pt';
+  };
 </script>
 
 <section class="relative h-screen bg-cover bg-center">
@@ -41,7 +47,7 @@
     class="absolute left-0 top-0 flex w-full items-center justify-between bg-gray-800 bg-opacity-50 p-6"
   >
     <h1 class="text-2xl font-bold text-white">
-      <a href="/">Quero Acolher</a>
+      <a href="/">{t($language).nomeDoSite}</a>
     </h1>
     <ul class="flex space-x-4">
       {#each pages as { url, title }, i}
@@ -56,6 +62,16 @@
         </li>
       {/each}
     </ul>
+    <div class="relative">
+      <select
+        class="block w-full appearance-none rounded border border-gray-700 bg-gray-800 px-4 py-2 pr-8 leading-tight text-white hover:border-gray-500 focus:border-gray-500 focus:bg-gray-700 focus:outline-none"
+        on:change={changeLanguage}
+        bind:value={$language}
+      >
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
+    </div>
   </nav>
 
   <div class="flex h-full items-center justify-center">
