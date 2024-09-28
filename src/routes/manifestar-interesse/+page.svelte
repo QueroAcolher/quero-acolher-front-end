@@ -1,12 +1,13 @@
 <script>
   import Nav from '$components/Nav.svelte';
+  import { PUBLIC_FORM_ENDPOINT } from '$env/static/public';
   import { language, t } from '$lib/locale';
 </script>
 
 <Nav />
 
 <div class="mx-auto max-w-lg rounded-lg bg-white p-6 shadow-md">
-  <form action="" class="space-y-4">
+  <form action={PUBLIC_FORM_ENDPOINT} method="POST" enctype="multipart/form-data" class="space-y-4">
     <div>
       <label for="name" class="block text-sm font-medium text-gray-700"
         >{t($language).form.labels.name}</label
