@@ -86,14 +86,15 @@
       ></textarea>
     </div>
 
+    <div class="flex justify-center">
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <h-captcha
       id="signupCaptcha"
       site-key="4c26b52c-1e4c-4dd2-92aa-ed2c8084cd58"
       size="normal"
       tabindex="0"
-    ></h-captcha>
-    
+    ></h-captcha></div>
+
     <div>
       <button
         type="submit"
