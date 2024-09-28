@@ -1,7 +1,24 @@
-<script>
+<script lang="ts">
   import Nav from '$components/Nav.svelte';
   import { PUBLIC_FORM_ENDPOINT } from '$env/static/public';
   import { language, t } from '$lib/locale';
+  import { onMount } from 'svelte';
+
+  interface HCaptchaEvent extends Event {
+    token: string;
+  }
+
+  onMount(() => {
+    const signupCaptcha = document.getElementById('signupCaptcha');
+    if (signupCaptcha) {
+      signupCaptcha.addEventListener('verified', (e) => {
+        console.log('verified event', { token: (e as HCaptchaEvent).token });
+      });
+      signupCaptcha.addEventListener('error', (e) => {
+        console.log('error event', { error: e.error });
+      });
+    }
+  });
 </script>
 
 <Nav />
@@ -67,6 +84,14 @@
         class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
       ></textarea>
     </div>
+
+    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+    <h-captcha
+      id="signupCaptcha"
+      site-key="4c26b52c-1e4c-4dd2-92aa-ed2c8084cd58"
+      size="normal"
+      tabindex="0"
+    ></h-captcha>
 
     <div>
       <button
