@@ -82,9 +82,9 @@
 <style>
   section {
     max-height: 400px;
-    background-image: url('/imgs/drone-shot.jpg');
-    background-blend-mode: multiply;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url('/imgs/Illustration.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   nav {
