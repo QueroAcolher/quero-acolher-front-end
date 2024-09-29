@@ -2,8 +2,8 @@
   import Nav from '$components/Nav.svelte';
   import { PUBLIC_FORM_ENDPOINT } from '$env/static/public';
   import { language, t } from '$lib/locale';
+  // import '@hcaptcha/vanilla-hcaptcha';
   import { onMount } from 'svelte';
-  import "@hcaptcha/vanilla-hcaptcha";
 
   interface HCaptchaEvent extends Event {
     token: string;
