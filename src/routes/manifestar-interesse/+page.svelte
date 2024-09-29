@@ -9,23 +9,49 @@
     token: string;
   }
 
+  let token: string;
+
   onMount(() => {
     const signupCaptcha = document.getElementById('signupCaptcha');
     if (signupCaptcha) {
       signupCaptcha.addEventListener('verified', (e) => {
-        console.log('verified event', { token: (e as HCaptchaEvent).token });
+        token = (e as HCaptchaEvent).token;
       });
       signupCaptcha.addEventListener('error', (e) => {
         console.log('error event', { error: e.error });
       });
     }
   });
+
+  async function handleSubmit(event: Event) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    formData.append('h-captcha-response', token);
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData
+    });
+
+    if (response.ok) {
+      alert('Form submitted successfully');
+    } else {
+      alert('Form submission failed');
+    }
+  }
 </script>
 
 <Nav />
 
 <div class="mx-auto max-w-lg rounded-lg bg-white p-6 shadow-md">
-  <form action={PUBLIC_FORM_ENDPOINT} method="POST" enctype="multipart/form-data" class="space-y-4">
+  <form
+    on:submit={handleSubmit}
+    action={PUBLIC_FORM_ENDPOINT}
+    method="POST"
+    enctype="multipart/form-data"
+    class="space-y-4"
+  >
     <div>
       <label for="name" class="block text-sm font-medium text-gray-700"
         >{t($language).form.labels.name}</label
@@ -87,13 +113,14 @@
     </div>
 
     <div class="flex justify-center">
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <h-captcha
-      id="signupCaptcha"
-      site-key="4c26b52c-1e4c-4dd2-92aa-ed2c8084cd58"
-      size="normal"
-      tabindex="0"
-    ></h-captcha></div>
+      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+      <h-captcha
+        id="signupCaptcha"
+        site-key="4c26b52c-1e4c-4dd2-92aa-ed2c8084cd58"
+        size="normal"
+        tabindex="0"
+      ></h-captcha>
+    </div>
 
     <div>
       <button
